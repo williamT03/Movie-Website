@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CinemaHub — Browse Movies & TV Shows</title>
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="discover.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation - Same as Home Page -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <a href="home.html" class="logo">
+          <span class="logo-icon">🎬</span>
+          <span class="logo-text">CinemaHub</span>
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <div class="nav-links">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link active">Discover Movies</a>
+        <a href="home.html#about" class="nav-link">About</a>
+        <a href="home.html#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero hero-discover">
+    <div class="hero-container with-navbar">
+      <div class="hero-content">
+        <h1 class="hero-title">Discover Amazing Movies</h1>
+        <h2 class="hero-subtitle">BROWSE OUR EXTENSIVE MOVIE DATABASE</h2>
+        <p class="hero-description">Search through thousands of movies, TV shows, and series with detailed information and ratings</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-container">
+        <div class="search-form">
+          <div class="search-input-group">
+            <input id="q" class="search-input" placeholder="Search movies, TV shows, actors..." />
+          </div>
+          <div class="select-group">
+            <select id="typeSelect" class="make-select">
+              <option value="">All Types</option>
+              <option value="movie">Movies</option>
+              <option value="series">TV Series</option>
+              <option value="episode">Episodes</option>
+            </select>
+          </div>
+          <div class="select-group">
+            <select id="yearSelect" class="make-select">
+              <option value="">All Years</option>
+            </select>
+          </div>
+          <button class="search-btn primary-btn" id="searchBtn">Search Movies</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Movie Sections -->
+    
+    <!-- Trending Movies Section -->
+    <section class="movie-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🔥 Trending Now</h2>
+          <p class="section-description">The hottest movies everyone is talking about</p>
+        </div>
+        <div id="trendingMovies" class="movie-grid">
+          <div class="loading-placeholder">Loading trending movies...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Movies Section -->
+    <section class="movie-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">⭐ Popular Movies</h2>
+          <p class="section-description">Fan favorites and crowd pleasers</p>
+        </div>
+        <div id="popularMovies" class="movie-grid">
+          <div class="loading-placeholder">Loading popular movies...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action Movies Section -->
+    <section class="movie-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">💥 Action & Adventure</h2>
+          <p class="section-description">High-octane thrills and epic adventures</p>
+        </div>
+        <div id="actionMovies" class="movie-grid">
+          <div class="loading-placeholder">Loading action movies...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Award Winning Section -->
+    <section class="movie-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🏆 Award Winners</h2>
+          <p class="section-description">Critically acclaimed and award-winning films</p>
+        </div>
+        <div id="awardMovies" class="movie-grid">
+          <div class="loading-placeholder">Loading award-winning movies...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Results Section (Hidden by default) -->
+    <section id="searchResults" class="movie-section" style="display: none;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🔍 Search Results</h2>
+          <div class="results-info">
+            <strong id="resultsCount" class="results-count">0</strong>
+            <span class="results-text">results found</span>
+          </div>
+        </div>
+        <div id="listingArea" class="search-results-grid"></div>
+      </div>
+    </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="logo">
+            <span class="logo-icon">🎬</span>
+            <span class="logo-text">CinemaHub</span>
+          </div>
+          <p class="footer-description">
+            Your ultimate destination for movie discovery. Explore comprehensive movie data, 
+            ratings, cast information, and more - all powered by the trusted OMDB database.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Discover Movies</a></li>
+            <li><a href="index.html">Search TV Shows</a></li>
+            <li><a href="index.html">Browse by Year</a></li>
+            <li><a href="index.html">Top Rated</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-title">Features</h4>
+          <ul class="footer-links">
+            <li><a href="home.html#features">Advanced Search</a></li>
+            <li><a href="home.html#features">Detailed Info</a></li>
+            <li><a href="home.html#features">Ratings & Reviews</a></li>
+            <li><a href="home.html#features">Cast & Crew</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-title">Support</h4>
+          <ul class="footer-links">
+            <li><a href="home.html#contact">Contact Us</a></li>
+            <li><a href="home.html#about">About</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CinemaHub. All rights reserved. Movie data provided by OMDB API.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="navigation.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
