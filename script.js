@@ -1,7 +1,6 @@
 // OMDB API Configuration
 // Note: You need to get a free API key from http://www.omdbapi.com/apikey.aspx
-// Replace 'DEMO_KEY' with your actual API key
-const OMDB_API_KEY = '7ef2f0e6'; // Your OMDB API key
+const OMDB_API_KEY = '7ef2f0e6'; // My OMDB API key
 const OMDB_BASE_URL = 'https://www.omdbapi.com/';
 
 // Enhanced movie searches for different categories with better variety
@@ -277,7 +276,7 @@ async function loadMovieCategory(category, container, limit = 6) {
     console.log(`Loading ${category} movies from OMDB API...`);
     
     // Search OMDB API for each term and collect movies with their poster images
-    for (const term of searchTerms.slice(0, 3)) { // Limit API calls to avoid rate limits
+    for (const term of searchTerms.slice(0, 3)) { 
       const results = await searchMovies(term, 'movie');
       if (results.movies.length > 0) {
         // Take first 2 movies from each search to get variety
@@ -758,8 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') performSearch();
     });
-    
-    // Mobile optimization: prevent zoom on focus
+
     searchInput.addEventListener('focus', function() {
       if (window.innerWidth <= 768) {
         this.style.fontSize = '16px';
@@ -782,34 +780,30 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Mobile touch optimizations
   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-    // Add touch-friendly class for touch devices
     document.body.classList.add('touch-device');
-    
-    // Improve touch scrolling for movie grids
+
     const movieGrids = document.querySelectorAll('.movie-grid');
     movieGrids.forEach(grid => {
       grid.style.scrollBehavior = 'smooth';
       grid.style.webkitOverflowScrolling = 'touch';
     });
   }
-  
-  // Handle orientation changes on mobile
+// Orientation change
   window.addEventListener('orientationchange', () => {
     setTimeout(() => {
-      // Recalculate layouts after orientation change
       window.dispatchEvent(new Event('resize'));
     }, 100);
   });
-  
-  // Optimize modal for mobile devices
+
   const handleResize = () => {
     const isMobile = window.innerWidth <= 768;
     if (isMobile) {
-      // Mobile-specific optimizations can be added here
+      
       document.body.style.setProperty('--mobile-vh', window.innerHeight * 0.01 + 'px');
     }
   };
   
   window.addEventListener('resize', handleResize);
-  handleResize(); // Initial call
+  handleResize(); 
+
 });
