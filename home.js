@@ -4,7 +4,7 @@
 let slideIndex = 1;
 let slideInterval;
 
-// Movie data for Netflix-style content updates
+// Movie data for slideshow
 const movieData = {
   'dark-knight': {
     title: 'The Dark Knight',
@@ -64,12 +64,11 @@ function showSlide(index) {
   if (index > slides.length) slideIndex = 1;
   if (index < 1) slideIndex = slides.length;
   
-  // Hide all slides
+  // Hide slides
   slides.forEach(slide => {
     slide.classList.remove('active');
   });
   
-  // Remove active class from all dots and reset animations
   dots.forEach(dot => {
     dot.classList.remove('active');
     // Force animation restart by removing and re-adding the class
@@ -77,22 +76,13 @@ function showSlide(index) {
     dot.offsetHeight; // Trigger reflow
     dot.style.animation = null;
   });
-  
-  // Show current slide and activate corresponding dot
+
   if (slides[slideIndex - 1]) {
     slides[slideIndex - 1].classList.add('active');
-    
-    // Update entire hero section background based on active movie
     const activeMovie = slides[slideIndex - 1].getAttribute('data-movie');
-    
-    // Remove all existing movie theme classes from hero section
     heroSection.classList.remove('dark-knight', 'inception', 'pulp-fiction', 'godfather', 'shawshank', 'interstellar');
-    
-    // Add the current movie theme class to hero section
     if (activeMovie) {
       heroSection.classList.add(activeMovie);
-      
-      // Update content with Netflix-style movie information
       updateMovieContent(activeMovie);
     }
   }
@@ -104,8 +94,6 @@ function showSlide(index) {
 function updateMovieContent(movieKey) {
   const movie = movieData[movieKey];
   if (!movie) return;
-  
-  // Update movie title
   const titleElement = document.getElementById('movie-title');
   if (titleElement) {
     titleElement.textContent = movie.title;
@@ -151,7 +139,7 @@ function autoSlide() {
 }
 
 function startAutoSlide() {
-  slideInterval = setInterval(autoSlide, 4000); // Change slide every 4 seconds
+  slideInterval = setInterval(autoSlide, 4000); // Change slide every 4 sec
 }
 
 function resetAutoSlide() {
@@ -159,7 +147,7 @@ function resetAutoSlide() {
   startAutoSlide();
 }
 
-// Make functions global for onclick handlers
+// onclick handlers
 window.changeSlide = changeSlide;
 window.currentSlide = currentSlide;
 
@@ -174,7 +162,7 @@ function scrollToSection(sectionId) {
   }
 }
 
-// Animate statistics numbers with movie-themed counts
+// Animate stat numbers with movie-themed counts
 function animateNumbers() {
   const statNumbers = document.querySelectorAll('.stat-number');
   
@@ -194,7 +182,7 @@ function animateNumbers() {
     const timer = setInterval(() => {
       current += increment;
       if (current >= target) {
-        stat.textContent = originalText; // Restore original format
+        stat.textContent = originalText; 
         clearInterval(timer);
       } else {
         if (originalText === '24/7') {
@@ -209,7 +197,6 @@ function animateNumbers() {
   });
 }
 
-// Intersection Observer for animations
 const observerOptions = {
   threshold: 0.5,
   rootMargin: '0px 0px -100px 0px'
@@ -229,7 +216,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Contact form handling with movie-themed responses
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize slideshow
   const slideshow = document.querySelector('.movie-slideshow');
@@ -267,26 +253,22 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   tipElement.textContent = randomTip;
   
-  // Auto-hide tip after 8 seconds
   setTimeout(() => {
     tipElement.style.animation = 'slideOut 0.5s ease forwards';
     setTimeout(() => tipElement.remove(), 500);
   }, 8000);
   
-  // Add click to dismiss
   tipElement.addEventListener('click', () => {
     tipElement.style.animation = 'slideOut 0.5s ease forwards';
     setTimeout(() => tipElement.remove(), 500);
   });
   
   document.body.appendChild(tipElement);
-  
-  // Observe stats section for number animation
+
   if (statsSection) {
     observer.observe(statsSection);
   }
-  
-  // Handle contact form submission with movie-themed responses
+
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -318,8 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1500);
     });
   }
-  
-  // Smooth scroll for navigation links
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -333,7 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-  // Add scroll effect to navbar
   let lastScrollTop = 0;
   const navbar = document.querySelector('.navbar');
   
@@ -358,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
   
-  // Add fade-in animation to feature cards
+  // Add fade-in animation
   const featureCards = document.querySelectorAll('.feature-card');
   const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
@@ -391,3 +371,4 @@ document.addEventListener('mouseout', (e) => {
     e.target.style.transform = e.target.style.transform.replace(' scale(1.02)', '');
   }
 });
+
