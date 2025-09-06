@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
+import useTheme from "./useTheme";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
 import { Link } from 'react-router-dom';
 import "./common.css";
 import "./home.css";
@@ -94,6 +97,9 @@ function getPosterUrl(key) {
 }
 
 const Home = () => {
+  // Theme mode state
+  const [theme, setTheme] = useState("light");
+  useTheme(theme);
   // Slideshow state
   const [slideIndex, setSlideIndex] = useState(0);
   const slideIntervalRef = useRef();
@@ -296,6 +302,15 @@ const Home = () => {
             <Link to="/discover" className="nav-link" onClick={() => setNavOpen(false)}>Discover Movies</Link>
             <a href="#about" className="nav-link" onClick={() => setNavOpen(false)}>About</a>
             <a href="#contact" className="nav-link" onClick={() => setNavOpen(false)}>Contact</a>
+            <button
+              className="nav-link theme-toggle-btn"
+              aria-label="Toggle dark/light mode"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            >
+              {theme === "light"
+                ? <FontAwesomeIcon icon={faMoon} />
+                : <FontAwesomeIcon icon={faSun} />}
+            </button>
           </div>
         </div>
       </nav>
