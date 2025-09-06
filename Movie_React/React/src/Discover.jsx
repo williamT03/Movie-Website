@@ -149,6 +149,35 @@ function Discover() {
 
   return (
     <div>
+      {/* Movie Details Modal */}
+      {modalOpen && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            {modalLoading ? (
+              <div className="modal-loading">Loading...</div>
+            ) : modalMovie ? (
+              <>
+                <button className="modal-close-btn" onClick={closeModal}>&times;</button>
+                <div className="modal-header">
+                  <img src={modalMovie.Poster && modalMovie.Poster !== "N/A" ? modalMovie.Poster : `https://via.placeholder.com/320x480/1a1a1a/ffffff?text=${encodeURIComponent(modalMovie.Title)}`} alt={modalMovie.Title} className="modal-poster" />
+                  <div className="modal-movie-info">
+                    <h2 className="modal-title">{modalMovie.Title}</h2>
+                    <p className="modal-year-type">{modalMovie.Year} &bull; {modalMovie.Type}</p>
+                    <p className="modal-genre"><strong>Genre:</strong> {modalMovie.Genre}</p>
+                    <p className="modal-rating"><strong>IMDB Rating:</strong> {modalMovie.imdbRating}</p>
+                    <p className="modal-plot"><strong>Plot:</strong> {modalMovie.Plot}</p>
+                    <p className="modal-director"><strong>Director:</strong> {modalMovie.Director}</p>
+                    <p className="modal-actors"><strong>Actors:</strong> {modalMovie.Actors}</p>
+                    <a href={`https://www.imdb.com/title/${modalMovie.imdbID}`} target="_blank" rel="noopener noreferrer" className="primary-btn modal-imdb-btn">View on IMDB</a>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="modal-error">Movie details not found.</div>
+            )}
+          </div>
+        </div>
+      )}
       {/* Navigation */}
       <nav className="navbar">
         <div className="container">
