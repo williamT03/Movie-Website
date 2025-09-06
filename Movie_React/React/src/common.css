@@ -16,6 +16,34 @@
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+body.dark-mode {
+  --primary-color: #ffd93d;
+  --primary-hover: #ff9800;
+  --secondary-color: #111217;
+  --text-primary: #ffffff;
+  --text-secondary: #bbbbbb;
+  --text-light: #e0e0e0;
+  --background: #101014;
+  --surface: #18181c;
+  --border: #222;
+  --shadow: 0 2px 16px rgba(0,0,0,0.8);
+  --shadow-hover: 0 4px 32px rgba(0,0,0,1);
+}
+
+body.light-mode {
+  --primary-color: #e31c23;
+  --primary-hover: #ff4757;
+  --secondary-color: #f5f6fa;
+  --text-primary: #222831;
+  --text-secondary: #7f8c8d;
+  --text-light: #333;
+  --background: #fff;
+  --surface: #f0f0f0;
+  --border: #e9ecef;
+  --shadow: 0 2px 16px rgba(0,0,0,0.08);
+  --shadow-hover: 0 4px 32px rgba(0,0,0,0.12);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -176,6 +204,24 @@ section {
   border-radius: 6px;
 }
 
+.theme-toggle-btn {
+  background: none !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, color 0.3s;
+}
+.theme-toggle-btn:hover {
+  background: rgba(255,255,255,0.1) !important;
+  color: #ffd93d !important;
+}
+
 .nav-link:hover,
 .nav-link.active {
   background: rgba(255, 255, 255, 0.1);
@@ -183,23 +229,8 @@ section {
 }
 
 /* Buttons */
-.btn {
-  display: inline-block;
-  padding: 16px 32px;
-  border-radius: 12px;
+.btn, button, .primary-btn, .secondary-btn, .cta-btn, .movie-btn, .movie-btn-grid, .form-submit {
   text-decoration: none !important;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 1rem;
-  font-family: var(--font-family);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn::before {

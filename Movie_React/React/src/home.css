@@ -13,6 +13,14 @@
   width: 100%;
 }
 
+body.light-mode .hero {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+}
+body.dark-mode .hero {
+  background: linear-gradient(135deg, #101014 0%, #23272f 100%);
+}
+
+/* Gradient overlay for hero */
 .hero::before {
   content: '';
   position: absolute;
@@ -23,6 +31,12 @@
   background: linear-gradient(135deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -2;
+}
+body.light-mode .hero::before {
+  background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(248,249,250,0.95) 100%);
+}
+body.dark-mode .hero::before {
+  background: linear-gradient(135deg, rgba(16,16,20,0.95) 0%, rgba(35,39,47,0.98) 100%);
 }
 
 .hero::after {
@@ -35,6 +49,12 @@
   background: radial-gradient(ellipse at 70% 50%, rgba(255, 193, 7, 0.08) 0%, transparent 50%);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
+}
+body.light-mode .hero::after {
+  background: radial-gradient(ellipse at 70% 50%, rgba(255, 193, 7, 0.12) 0%, rgba(255,255,255,0.08) 50%, transparent 70%);
+}
+body.dark-mode .hero::after {
+  background: radial-gradient(ellipse at 70% 50%, rgba(255, 193, 7, 0.08) 0%, transparent 50%);
 }
 
 /* Home Page Hero */
@@ -391,11 +411,21 @@
   transition: all 0.3s ease;
   border: 2px solid transparent;
 }
-
-.dot.active, .nav-dot.active {
-  background: #ffd93d;
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: scale(1.2);
+.form-submit {
+  padding: 18px 40px;
+  font-size: 1.15rem;
+  border-radius: 25px;
+  background: linear-gradient(135deg, var(--primary-color), #ff4757);
+  color: white;
+  border: 2px solid transparent;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(227, 28, 35, 0.4);
+  transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+.form-submit:hover {
+  background: linear-gradient(135deg, var(--primary-hover), #ff3742);
+  box-shadow: 0 8px 30px rgba(227, 28, 35, 0.6);
+  color: white;
 }
 
 .dot:hover, .nav-dot:hover {
@@ -490,8 +520,18 @@
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px) scale(1.08);
   box-shadow: var(--shadow-hover);
+  z-index: 2;
+}
+
+.feature-card:hover .feature-title {
+  color: var(--primary-color);
+  text-shadow: none;
+}
+
+.feature-card:hover {
+  box-shadow: 0 0 0 4px var(--primary-color), 0 8px 32px rgba(227,28,35,0.25);
 }
 
 .feature-icon {
